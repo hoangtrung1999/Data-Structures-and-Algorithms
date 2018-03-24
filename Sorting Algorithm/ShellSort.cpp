@@ -1,18 +1,22 @@
 #include <iostream>
+#include <cstdlib>
 #include <ctime>
 using namespace std;
 
 void InputArray(int ArrayA[], int &n)
 {
-	cout<<"Nhap vao kich thuoc cua mang: ";
+	cout<<"Nhap vao kich thuoc mang: ";
 	cin>>n;
-	cout<<"Nhap vao cac phan tu cua mang: "<<endl;
+	srand(time(NULL));
 	for (int i = 0 ; i < n ; i++)
-		cin>>ArrayA[i];
-
-	/*copy(ArrayA,ArrayA + n,ArrayB);
-	copy(ArrayA,ArrayA + n,ArrayC);
-	copy(ArrayA,ArrayA + n,ArrayD);*/
+		{
+			int x = rand() % 100;
+			ArrayA[i] = x;
+		}
+	cout<<"Random Input: ";
+	for (int i = 0 ; i < n ; i++)
+		cout<<ArrayA[i]<<" ";
+	cout<<endl;
 }
 
 void PrintResult (int Array[], int n)

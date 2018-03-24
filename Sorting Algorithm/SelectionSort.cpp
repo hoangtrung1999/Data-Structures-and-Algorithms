@@ -27,19 +27,23 @@ void PrintResult (int Array[], int n)
 	cout<<endl;
 }
 
-void BubbleSort (int ArrayA[], int n )
+void SelectionSort (int ArrayA[], int n )
 {
-	cout<<"BubbleSort"<<endl;
+	cout<<"Selection Sort"<<endl;
+	int index;
 	int temp;
-	for (int i = 0 ; i < n ; i++)
-		for (int j = n - 1 ; j > i ; j--)
-			if (ArrayA[j] < ArrayA[j-1])
-			{
-				temp = ArrayA[j];
-				ArrayA[j] = ArrayA[j-1];
-				ArrayA[j-1] = temp;
-			}
+	for (int i = 0 ; i < n - 1 ; i++)
+	{
+		index = i;
+		for (int j = i ; j < n ; j++)
+			if ( ArrayA[j] < ArrayA[index])
+				index = j;
+		temp = ArrayA[index];
+		ArrayA[index] = ArrayA[i];
+		ArrayA[i] = temp;
+	}
 	PrintResult(ArrayA,n);
+	
 }
 
 int main()
@@ -51,8 +55,8 @@ int main()
 	InputArray(ArrayA,n);
 	// Call And Calculate Running Time
 	start = clock();
-	BubbleSort(ArrayA,n);
+	SelectionSort(ArrayA,n);
 	end = clock();
-	cout<<"BubbleSort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
+	cout<<"Selection Sort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
 	return 0;
 }

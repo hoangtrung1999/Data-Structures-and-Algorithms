@@ -27,37 +27,39 @@ void PrintResult (int Array[], int n)
 	cout<<endl;
 }
 
-void ShakerSort (int Array[] , int n)
-{
-	cout<<"ShakerSort"<<endl;
-	int Left = 0;
-	int Right = n -1;
-	int k = 0;
+ int Partition (int ArrayA[], int low , int high)
+ {
+ 	int pivot = ArrayA[high];
+	int i = low - 1;
+	int j = low ;
 	int temp;
-	while (Left < Right)
+	
+	for (; j < high ; j++)
 	{
-		for (int i = Left ; i < Right ; i++)
-			if (Array[i] > Array[i+1])
+			if (ArrayA[j] <= pivot)
 			{
-				k = i;
-				temp = Array[i];
-				Array[i] = Array[i+1];
-				Array[i+1] = temp;
+				i++;
+				temp = ArrayA[i];
+				ArrayA[i] = ArrayA[j];
+				ArrayA[j] = temp;
 			}
-		Right = k;
-		for (int i = Right ; i > Left ; i--)
-			if (Array[i] < Array[i-1])
-			{
-				k = i;
-				temp = Array[i];
-				Array[i] = Array[i-1];
-				Array[i-1] = temp;
-			}
-		Left = k;
 	}
-	PrintResult(Array,n);
-}
+		temp = ArrayA[high];
+		ArrayA[high] = ArrayA[i+1];
+		ArrayA[i+1] = temp;
+	return i + 1;
+ }
 
+void QuickSort (int ArrayA[], int n, int low , int high)
+{
+	if ( low < high)
+	{
+		int i = Partition(ArrayA,low,high);
+		QuickSort(ArrayA,n,low,i-1);
+		QuickSort(ArrayA,n,i+1,high);
+	}
+		
+}
 
 int main()
 {
@@ -67,11 +69,11 @@ int main()
 	clock_t end;
 	InputArray(ArrayA,n);
 	// Call And Calculate Running Time
-
 	start = clock();
-	ShakerSort(ArrayA,n);
+	cout<<"Quick Sort"<<endl;
+	QuickSort(ArrayA,n,0,n-1);
+	PrintResult(ArrayA,n);
 	end = clock();
-	cout<<"ShakerSort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
-
+	cout<<"Quick Sort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
 	return 0;
 }

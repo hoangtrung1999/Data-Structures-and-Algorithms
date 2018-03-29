@@ -31,15 +31,13 @@ void Heapify (int ArrayA[], int n , int pivot)
 {
 	while (pivot < n/2)
 	{
-		int temp = 2*pivot + 1;
+		int temp = 2*pivot + 1;// Pos Left Child
 		if (temp + 1 < n &&  ArrayA[temp] < ArrayA[temp+1])
 			temp++;
 		if (ArrayA[pivot] < ArrayA[temp])
-		{
-			int swap = ArrayA[pivot];
-			ArrayA[pivot] = ArrayA[temp];
-			ArrayA[temp] = swap;
-		}
+			swap(ArrayA[pivot],ArrayA[temp]);
+		else
+			break;
 		pivot = temp;
 	}
 }

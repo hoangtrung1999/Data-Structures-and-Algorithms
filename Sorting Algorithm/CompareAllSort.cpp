@@ -150,7 +150,7 @@ int main()
 	RandomInputArray(ArrayA,ArrayB,ArrayC,ArrayD,n);
 
 	// Call And Calculate Running Time
-	/*start = clock();
+	start = clock();
 	BubbleSort(ArrayA,n);
 	end = clock();
 	cout<<"BubbleSort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
@@ -164,7 +164,7 @@ int main()
 	ShellSort(ArrayC,n);
 	end = clock();
 	cout<<"ShellSort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
-*/
+
 	start = clock();
 	HeapSort(ArrayD,n);
 	end = clock();

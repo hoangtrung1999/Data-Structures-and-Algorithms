@@ -32,21 +32,16 @@ void PrintResult (int Array[], int n)
  	int pivot = ArrayA[high];
 	int i = low - 1;
 	int j = low ;
-	int temp;
 	
 	for (; j < high ; j++)
 	{
 			if (ArrayA[j] <= pivot)
 			{
 				i++;
-				temp = ArrayA[i];
-				ArrayA[i] = ArrayA[j];
-				ArrayA[j] = temp;
+				swap(ArrayA[i],ArrayA[j]);
 			}
 	}
-		temp = ArrayA[high];
-		ArrayA[high] = ArrayA[i+1];
-		ArrayA[i+1] = temp;
+	swap(ArrayA[high],ArrayA[i+1]);
 	return i + 1;
  }
 

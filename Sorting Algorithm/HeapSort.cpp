@@ -3,6 +3,8 @@
 #include <ctime>
 using namespace std;
 
+int Swap = 0;
+int Compare = 0;
 void InputArray(int ArrayA[], int &n)
 {
 	cout<<"Nhap vao kich thuoc mang: ";
@@ -33,9 +35,16 @@ void Heapify (int ArrayA[], int n , int pivot)
 	{
 		int temp = 2*pivot + 1;// Pos Left Child
 		if (temp + 1 < n &&  ArrayA[temp] < ArrayA[temp+1])
+		{
+			Compare += 2;
 			temp++;
+		}
 		if (ArrayA[pivot] < ArrayA[temp])
+		{
+			Compare++;
+			Swap++;
 			swap(ArrayA[pivot],ArrayA[temp]);
+		}
 		else
 			break;
 		pivot = temp;
@@ -58,6 +67,7 @@ void HeapSort (int ArrayA[], int n )
 		int temp = ArrayA[0];
 		ArrayA[0] = ArrayA[length-1];
 		ArrayA[length-1] = temp;
+		Swap++;
 		length--;
 		Heapify(ArrayA,length,0);
 	}
@@ -77,5 +87,7 @@ int main()
 	HeapSort(ArrayA,n);
 	end = clock();
 	cout<<"Heap Sort runs in "<<((double)(end -start))/CLOCKS_PER_SEC<<"s"<<endl;
+	cout<<"Swap: "<<Swap<<endl;
+	cout<<"Compare: "<<Compare<<endl;
 	return 0;
 }

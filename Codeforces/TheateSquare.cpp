@@ -4,10 +4,10 @@ using namespace std;
 
 int main()
 {
-	int m;
-	int n;
-	int a;
+	long long int m;
+	long long int n;
+	long long int a;
 	cin>>n>>m>>a;
-	double result = ((m+a-1)/a) * ((n+a-1)/a);
+	long long int result = ((m+a-1)/a) * ((n+a-1)/a);
 	cout<<result;
 }

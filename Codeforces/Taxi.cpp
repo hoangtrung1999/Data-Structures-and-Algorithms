@@ -1,6 +1,14 @@
 #include <iostream>
 using namespace std;
 
+void PrintTest (int AmountOfEachNumber[], int result)
+{
+	cout<<endl;
+	for (int i = 0 ; i < 4 ; i++)
+		cout<<AmountOfEachNumber[i]<<endl;
+	cout<<"Result: "<<result<<endl;
+}
+
 int main()
 {
 	int n;
@@ -14,20 +22,18 @@ int main()
 		AmountOfEachNumber[x-1] += 1;
 	}
 
-/*	cout<<endl;
-	for (int i = 0 ; i < 4 ; i++)
-		cout<<AmountOfEachNumber[i]<<endl;
-	cout<<"Result: "<<result<<endl;*/
-
+	PrintTest(AmountOfEachNumber,result);
 	result += AmountOfEachNumber[3]; // Each 4-group gets into a taxi;
 	AmountOfEachNumber[3]  = 0;
 
 	result += AmountOfEachNumber[1] / 2; // Every two 2-group gets into a taxi;
 	AmountOfEachNumber[1] = AmountOfEachNumber[1] % 2; // There will be 0 or 1 2-group;
+	PrintTest(AmountOfEachNumber,result);
 
 	result += AmountOfEachNumber[0] / 4; // 4 1-groups into 1 taxi;
 	AmountOfEachNumber[0] = AmountOfEachNumber[0] % 4;
-
+	PrintTest(AmountOfEachNumber,result);
+	
 	if (AmountOfEachNumber[0] <= AmountOfEachNumber[2]) // 1 < 3 group;
 		{
 			AmountOfEachNumber[2] -= AmountOfEachNumber[0];
